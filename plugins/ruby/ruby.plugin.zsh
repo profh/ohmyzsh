@@ -12,3 +12,7 @@ alias rb="ruby"
 alias gin="gem install"
 alias gun="gem uninstall"
 alias gli="gem list"
+
+# Bundler Shortcuts
+alias bi="bundle install"
+alias bu="bundle update"
