@@ -51,6 +51,10 @@ plugins=(... git)
 | gcd                  | git checkout develop                                                                                                             |
 | gcmsg                | git commit -m                                                                                                                    |
 | gco                  | git checkout                                                                                                                     |
+| gcom                 | git checkout master                                                                                                              |
+| gcoma                | git checkout main                                                                                                                |
+| gcod                 | git checkout dev                                                                                                                 |
+| gcox                 | git checkout exp                                                                                                                 |
 | gcount               | git shortlog -sn                                                                                                                 |
 | gcp                  | git cherry-pick                                                                                                                  |
 | gcpa                 | git cherry-pick --abort                                                                                                          |
