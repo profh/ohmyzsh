@@ -190,7 +190,7 @@ alias git-svn-dcommit-push='git svn dcommit && git push github $(git_main_branch
 alias gk='\gitk --all --branches'
 alias gke='\gitk --all $(git log -g --pretty=%h)'
 
-alias gl="graph log --graph --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %C(yellow):%an%Creset %Cblue(%cr)%Creset' --abbrev-commit --date=relative"
+alias gla="graph log --graph --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %C(yellow):%an%Creset %Cblue(%cr)%Creset' --abbrev-commit --date=relative"
 alias glg='git log --stat'
 alias glgp='git log --stat -p'
 alias glgg='git log --graph'
