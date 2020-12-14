@@ -130,4 +130,4 @@ if [ ! "$ZSH_THEME" = ""  ]; then
 fi
 
 # Alias the `ls` command
-alias ls="ls -lh"
+# alias ls="ls -lhF"
