@@ -128,3 +128,6 @@ if [ ! "$ZSH_THEME" = ""  ]; then
     source "$ZSH/themes/$ZSH_THEME.zsh-theme"
   fi
 fi
+
+# Alias the `ls` command
+alias ls="ls -lh"
