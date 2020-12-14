@@ -102,6 +102,11 @@ alias gds='git diff --staged'
 alias gdt='git diff-tree --no-commit-id --name-only -r'
 alias gdw='git diff --word-diff'
 
+alias gcom='git checkout master'
+alias gcoma='git checkout main'
+alias gcod='git checkout dev'
+alias gcox='git checkout exp'
+
 function gdnolock() {
   git diff "$@" ":(exclude)package-lock.json" ":(exclude)*.lock"
 }
@@ -184,7 +189,7 @@ alias git-svn-dcommit-push='git svn dcommit && git push github $(git_main_branch
 alias gk='\gitk --all --branches'
 alias gke='\gitk --all $(git log -g --pretty=%h)'
 
-alias gl='git pull'
+alias gl="graph log --graph --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %C(yellow):%an%Creset %Cblue(%cr)%Creset' --abbrev-commit --date=relative"
 alias glg='git log --stat'
 alias glgp='git log --stat -p'
 alias glgg='git log --graph'
@@ -201,6 +206,8 @@ alias gloga='git log --oneline --decorate --graph --all'
 alias glp="_git_log_prettily"
 
 alias gm='git merge'
+alias gmd='git merge dev'
+alias gmx='git merge exp'
 alias gmom='git merge origin/$(git_main_branch)'
 alias gmt='git mergetool --no-prompt'
 alias gmtvim='git mergetool --no-prompt --tool=vimdiff'
@@ -214,6 +221,11 @@ alias gpf!='git push --force'
 alias gpoat='git push origin --all && git push origin --tags'
 alias gpu='git push upstream'
 alias gpv='git push -v'
+
+alias gpl='git pull'
+alias gplom='git pull origin master'
+alias gplum='git pull upstream master'
+
 
 alias gr='git remote'
 alias gra='git remote add'
