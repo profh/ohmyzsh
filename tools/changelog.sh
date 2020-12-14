@@ -8,16 +8,16 @@
 #* and the display string of such type
 local -A TYPES
 TYPES=(
-  [build]="Build system"
-  [chore]="Chore"
-  [ci]="CI"
-  [docs]="Documentation"
-  [feat]="Features"
-  [fix]="Bug fixes"
-  [perf]="Performance"
-  [refactor]="Refactor"
-  [style]="Style"
-  [test]="Testing"
+  build     "Build system"
+  chore     "Chore"
+  ci        "CI"
+  docs      "Documentation"
+  feat      "Features"
+  fix       "Bug fixes"
+  perf      "Performance"
+  refactor  "Refactor"
+  style     "Style"
+  test      "Testing"
 )
 
 #* Types that will be displayed in their own section,
@@ -86,11 +86,15 @@ function parse-commit {
 
   # Return subject if the body or subject match the breaking change format
   function commit:is-breaking {
-    local subject="$1" body="$2"
+    local subject="$1" body="$2" message
 
     if [[ "$body" =~ "BREAKING CHANGE: (.*)" || \
       "$subject" =~ '^[^ :\)]+\)?!: (.*)$' ]]; then
-      echo "${match[1]}"
+      message="${match[1]}"
+      # skip next paragraphs (separated by two newlines or more)
+      message="${message%%$'\n\n'*}"
+      # ... and replace newlines with spaces
+      echo "${message//$'\n'/ }"
     else
       return 1
     fi
@@ -248,7 +252,7 @@ function display-release {
     case "$output" in
     raw) printf "$subject" ;;
     # In text mode, highlight (#<issue>) and dim text between `backticks`
-    text) sed -E $'s|#([0-9]+)|\e[32m#\\1\e[0m|g;s|`(.+)`|`\e[2m\\1\e[0m`|g' <<< "$subject" ;;
+    text) sed -E $'s|#([0-9]+)|\e[32m#\\1\e[0m|g;s|`([^`]+)`|`\e[2m\\1\e[0m`|g' <<< "$subject" ;;
     # In markdown mode, link to (#<issue>) issues
     md) sed -E 's|#([0-9]+)|[#\1](https://github.com/ohmyzsh/ohmyzsh/issues/\1)|g' <<< "$subject" ;;
     esac
@@ -274,8 +278,8 @@ function display-release {
     (( $#breaking != 0 )) || return 0
 
     case "$output" in
-    raw) display:type-header "BREAKING CHANGES" ;;
-    text|md) display:type-header "⚠ BREAKING CHANGES" ;;
+    raw) fmt:header "BREAKING CHANGES" 3 ;;
+    text|md) fmt:header "⚠ BREAKING CHANGES" 3 ;;
     esac
 
     local hash subject
@@ -340,16 +344,23 @@ function display-release {
 
 function main {
   # $1 = until commit, $2 = since commit
-  # $3 = output format (--raw|--text|--md)
   local until="$1" since="$2"
+
+  # $3 = output format (--text|--raw|--md)
+  # --md:   uses markdown formatting
+  # --raw:  outputs without style
+  # --text: uses ANSI escape codes to style the output
   local output=${${3:-"--text"}#--*}
 
   if [[ -z "$until" ]]; then
     until=HEAD
   fi
 
-  # If $since is not specified, look up first version tag before $until
   if [[ -z "$since" ]]; then
+    # If $since is not specified:
+    # 1) try to find the version used before updating
+    # 2) try to find the first version tag before $until
+    since=$(command git config --get oh-my-zsh.lastVersion 2>/dev/null) || \
     since=$(command git describe --abbrev=0 --tags "$until^" 2>/dev/null) || \
     unset since
   elif [[ "$since" = --all ]]; then
