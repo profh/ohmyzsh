@@ -44,7 +44,7 @@ alias rcs='rails console --sandbox'
 alias rd='rails destroy'
 alias rdb='rails dbconsole'
 alias rgen='rails generate'
-alias rgm='rails generate model'
+# alias rgm='rails generate model'
 alias rgmi='rails generate migration'
 alias rp='rails plugin'
 alias ru='rails runner'
@@ -52,17 +52,38 @@ alias rs='rails server'
 alias rsd='rails server --debugger'
 alias rsp='rails server --port'
 
+# Some of my old aliases
+alias rg='rails generate'
+alias rgs='rails generate scaffold'
+alias rgm='rails generate model'
+alias rgc='rails generate controller'
+# alias rgmg='rails generate migration'
+alias bi='bundle install'
+
+alias rdp='bundle exec rake db:populate --trace'  # assuming a populate task exists
+alias rdc='bundle exec rails db:create'
+alias rdd='bundle exec rails db:drop'
+alias rdm='bundle exec rails db:migrate'
+alias rdp='bundle exec rails db:populate --trace' # assuming a populate task exists
+alias rds='bundle exec rails db:startup --trace'  # assuming a startup task exists
+alias rtu='bundle exec rails test test/models'    # older; for unit testing
+alias rdtp='bundle exec rails db:test:prepare'
+alias rt='bundle exec rails test'                 # for generic rails testing
+alias rtm='bundle exec rails test:models'         # for rails testing of models
+alias rtc='bundle exec rails test:controllers'    # for rails testing of controllers
+alias cuke='bundle exec cucumber'                 # for cucumber testing
+
 # Rake aliases
-alias rdm='rake db:migrate'
-alias rdms='rake db:migrate:status'
-alias rdr='rake db:rollback'
-alias rdc='rake db:create'
-alias rds='rake db:seed'
-alias rdd='rake db:drop'
-alias rdrs='rake db:reset'
-alias rdtc='rake db:test:clone'
-alias rdtp='rake db:test:prepare'
-alias rdmtc='rake db:migrate db:test:clone'
+# alias rdm='rake db:migrate'
+# alias rdms='rake db:migrate:status'
+# alias rdr='rake db:rollback'
+# alias rdc='rake db:create'
+# alias rds='rake db:seed'
+# alias rdd='rake db:drop'
+# alias rdrs='rake db:reset'
+# alias rdtc='rake db:test:clone'
+# alias rdtp='rake db:test:prepare'
+# alias rdmtc='rake db:migrate db:test:clone'
 alias rdsl='rake db:schema:load'
 alias rlc='rake log:clear'
 alias rn='rake notes'
