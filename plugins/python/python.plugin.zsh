@@ -45,3 +45,13 @@ alias pygrep='grep -nr --include="*.py"'
 
 # Run proper IPython regarding current virtualenv (if any)
 alias ipython="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
+
+# Old aliases for Python and Django
+alias p3="python3"
+alias pip="pip3"
+alias pi="pip3 install"
+alias dshell="python3 manage.py shell"
+alias djs="python3 manage.py runserver"
+alias mp="python3 manage.py"
+alias jsonpp="python3 -m json.tool"
+ 
