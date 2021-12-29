@@ -54,14 +54,10 @@ plugins=(... git)
 | gcd                  | git checkout $(git_develop_branch)                                                                                               |
 | gcmsg                | git commit -m                                                                                                                    |
 | gco                  | git checkout                                                                                                                     |
-<<<<<<< HEAD
 | gcom                 | git checkout master                                                                                                              |
 | gcoma                | git checkout main                                                                                                                |
 | gcod                 | git checkout dev                                                                                                                 |
 | gcox                 | git checkout exp                                                                                                                 |
-=======
-| gcor                 | git checkout --recurse-submodules                                                                                                |
->>>>>>> 4ef188cebf054896b47aa91181dacc2c674b5063
 | gcount               | git shortlog -sn                                                                                                                 |
 | gcp                  | git cherry-pick                                                                                                                  |
 | gcpa                 | git cherry-pick --abort                                                                                                          |
