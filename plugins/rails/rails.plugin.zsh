@@ -47,10 +47,13 @@ alias rgen='rails generate'
 # alias rgm='rails generate model'
 alias rgmi='rails generate migration'
 alias rp='rails plugin'
+alias rr='rails routes'
+alias rrg='rails routes | grep'
 alias ru='rails runner'
 alias rs='rails server'
 alias rsd='rails server --debugger'
 alias rsp='rails server --port'
+alias rsb='rails server --bind'
 
 # Some of my old aliases
 alias rg='rails generate'
@@ -61,6 +64,7 @@ alias rgc='rails generate controller'
 alias bi='bundle install'
 
 alias rdp='bundle exec rake db:populate --trace'  # assuming a populate task exists
+alias rdcon='bundle exec rake db:contexts --trace'  # assuming a contexts task exists
 alias rdc='bundle exec rails db:create'
 alias rdd='bundle exec rails db:drop'
 alias rdm='bundle exec rails db:migrate'
@@ -87,8 +91,6 @@ alias cuke='bundle exec cucumber'                 # for cucumber testing
 alias rdsl='rake db:schema:load'
 alias rlc='rake log:clear'
 alias rn='rake notes'
-alias rr='rake routes'
-alias rrg='rake routes | grep'
 alias rt='rake test'
 alias rmd='rake middleware'
 alias rsts='rake stats'
